@@ -8,6 +8,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import consultas.consultas;
+import dal.alumno;
+import dal.portatil;
+import dto.ADaoServicio;
+import dto.ADaoServicioImpl;
+import dto.ADtoServicio;
+import dto.ADtoServicioImpl;
+import dto.alumnoDTO;
+import dto.portatilDTO;
 
 
 
@@ -21,6 +29,8 @@ public class App {
 	  boolean salir = false;
 	  //Guardamos la información del usuario
 	  int opcion;
+	  ADtoServicio aDto = new ADtoServicioImpl();
+	  ADaoServicio aDao = new ADaoServicioImpl();
 	 
 	  
 	  while(!salir) {
@@ -36,10 +46,23 @@ public class App {
 		  System.out.println("Introduce una de las opciones: ");
 		  opcion = sn.nextInt();
 		  
+		  //DTO para alumno
+		  alumnoDTO dtoAlumno;
+		  alumno Alumno;
+		  
+		  //DTO para portatil
+		  portatilDTO dtoPortatil;
+		  portatil Portatil;
+		  
+		  
 		  
 		  try {
 			  switch(opcion) {
 			  case 1: 
+				  
+				 dtoAlumno = aDto.aAlumnoDTONormal(23, "MD678", "Francisco", "67890123", );
+				 Alumno = aDao.alumnoDTOADAO(dtoAlumno);
+				 consulta.insertarUnAlumno(Alumno);
 				 
 				  break;
 			  case 2: 
@@ -47,7 +70,9 @@ public class App {
 				  
 				  break;
 			  case 3: 
-				  
+				  dtoPortatil = aDto.aPortatilDTONormal(4, "MD91", "Asus206" , "Asus");
+				  Portatil = aDao.portatilDTOADAO(dtoPortatil);
+				  consulta.insertarUnPortatil(Portatil);
 				  
 				  break;
 			  case 4: 

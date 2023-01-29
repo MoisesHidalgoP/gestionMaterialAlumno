@@ -15,12 +15,12 @@
 	<!-- Se activa el uso de anotaciones en las clases bean -->    
     <context:annotation-config></context:annotation-config>
     <!-- Se define en qué paquete están las clases que podrán tener anotaciones -->
-    <context:component-scan base-package="dal,controlador,dto"></context:component-scan>
+    <context:component-scan base-package="dal,controlador,dto,consultas"></context:component-scan>
 		
 	<!-- Se configura la configuración para la conexión a base de datos -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver"></property>	
-		<property name="url" value="jdbc:postgresql://localhost:5432/gestionGasolinera"></property>
+		<property name="url" value="jdbc:postgresql://localhost:5432/gestionMaterialAlumno"></property>
 		<property name="username" value="postgres"></property>
 		<property name="password" value="doshermanas1"></property>
 	</bean>

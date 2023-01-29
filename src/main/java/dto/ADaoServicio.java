@@ -1,9 +1,11 @@
 package dto;
 
+import dal.alumno;
 import dal.portatil;
 
 public interface ADaoServicio {
 	
-	public portatil portatilDTOADAO(alumnoDTO alumnoDTO);
+	public portatil portatilDTOADAO(portatilDTO PortatilDTO);
+	public alumno alumnoDTOADAO (alumnoDTO AlumnoDTO);
 
 }
