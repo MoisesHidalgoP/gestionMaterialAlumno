@@ -1,6 +1,7 @@
 package controlador;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
@@ -54,13 +55,15 @@ public class App {
 		  portatilDTO dtoPortatil;
 		  portatil Portatil;
 		  
+		 List<portatil>listaPortatil = consulta.listPortatil();
 		  
 		  
 		  try {
 			  switch(opcion) {
 			  case 1: 
+				   
 				  
-				 dtoAlumno = aDto.aAlumnoDTONormal(23, "MD678", "Francisco", "67890123", );
+				 dtoAlumno = aDto.aAlumnoDTONormal(23, "MD678", "Francisco", "67890123" ,listaPortatil.get(4) );
 				 Alumno = aDao.alumnoDTOADAO(dtoAlumno);
 				 consulta.insertarUnAlumno(Alumno);
 				 

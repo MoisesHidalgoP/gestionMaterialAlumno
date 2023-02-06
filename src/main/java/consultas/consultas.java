@@ -1,5 +1,7 @@
 package consultas;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,11 @@ public class consultas {
 	@Transactional
 	public void insertarUnPortatil(portatil alta) {
 		por.insertarAltaPortatil(alta);
+	}
+	
+	@Transactional
+	public List<portatil>listPortatil(){
+		return por.buscaPortatil();
 	}
 
 }
