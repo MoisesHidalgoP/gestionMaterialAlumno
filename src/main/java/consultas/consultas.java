@@ -2,6 +2,7 @@ package consultas;
 
 import java.util.List;
 
+import javax.management.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,6 @@ public class consultas {
 		al.insertarMatriculaAlumno(matricula);
 	}
 	
-	@Transactional
-	public void borrarUnaMatriculaAlumno(alumno matricula) {
-		al.borrarMatriculaAlumno(matricula);
-	}
 	
 	@Transactional
 	public void insertarUnPortatil(portatil alta) {
@@ -38,6 +35,21 @@ public class consultas {
 	@Transactional
 	public List<portatil>listPortatil(){
 		return por.buscaPortatil();
+	}
+	
+	@Transactional
+    public void eliminarUnAlumno(Integer id) {
+        al.eliminarAlumno(id);
+    }
+
+	@Transactional
+	public alumno buscarAlumnoPorIdPortatil(Integer idPortatil) {
+        return al.buscarAlumnoPorIdPortatil(idPortatil);
+    }
+    
+	@Transactional
+	public List<alumno> listaAlumnos(){
+		return al.buscarTodos();
 	}
 
 }

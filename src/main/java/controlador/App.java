@@ -36,13 +36,13 @@ public class App {
 	  
 	  while(!salir) {
 		  
-		  System.out.println("Matricula del Alumno");
-		  System.out.println("Baja del Alumno");
-		  System.out.println("Alta de portatil");
-		  System.out.println("Consulta portátil asignado a un alumno");
-		  System.out.println("Consulta alumno asignado a un portátil");
-		  System.out.println("Ver todos los alumnos con su asignación de portátil");
-		  System.out.println("Salir");
+		  System.out.println("1. Matricula del Alumno");
+		  System.out.println("2. Baja del Alumno");
+		  System.out.println("3. Alta de portatil");
+		  System.out.println("4. Consulta portátil asignado a un alumno");
+		  System.out.println("5. Consulta alumno asignado a un portátil");
+		  System.out.println("6. Ver todos los alumnos con su asignación de portátil");
+		  System.out.println("7. Salir");
 		  
 		  System.out.println("Introduce una de las opciones: ");
 		  opcion = sn.nextInt();
@@ -56,6 +56,7 @@ public class App {
 		  portatil Portatil;
 		  
 		 List<portatil>listaPortatil = consulta.listPortatil();
+		 Scanner scan = new Scanner(System.in);
 		  
 		  
 		  try {
@@ -63,31 +64,49 @@ public class App {
 			  case 1: 
 				   
 				  
-				 dtoAlumno = aDto.aAlumnoDTONormal(23, "MD678", "Francisco", "67890123" ,listaPortatil.get(4) );
+				 dtoAlumno = aDto.aAlumnoDTONormal(30, "MC345", "Moises", "633234567" ,listaPortatil.get(1) );
 				 Alumno = aDao.alumnoDTOADAO(dtoAlumno);
 				 consulta.insertarUnAlumno(Alumno);
 				 
 				  break;
 			  case 2: 
+				  System.out.println("Introduce el codigo del alumno a eliminar: ");
+				  Integer codAlumno = scan.nextInt();
+			      consulta.eliminarUnAlumno(codAlumno);
 				
 				  
 				  break;
 			  case 3: 
-				  dtoPortatil = aDto.aPortatilDTONormal(4, "MD91", "Asus206" , "Asus");
+				  dtoPortatil = aDto.aPortatilDTONormal(5, "MD919", "Apple" , "Apple");
 				  Portatil = aDao.portatilDTOADAO(dtoPortatil);
 				  consulta.insertarUnPortatil(Portatil);
 				  
 				  break;
 			  case 4: 
-				 
+				  
+				
+				  
 				  break;
 			  case 5: 
+				  
+				//Busueda de un alumno introduciendo el id del portatil
+					
+					System.out.println("Introduce el id del portatil para buscar su alumno.");
+					Integer idPortatil=scan.nextInt();
+					Alumno = consulta.buscarAlumnoPorIdPortatil(idPortatil);
+					System.out.println("El alumno asignado a este portatil es: " + Alumno.getNombre());
 				
 				  break;
 			  case 6: 
+				  
+				//Listado de todos los alumnos con su portatil asignado
+					List<alumno>listaAlumnos= consulta.listaAlumnos();
+					for(alumno alumno : listaAlumnos) {
+						System.out.println("Alumno: " + alumno.getNombre() + " " + " Portatil: " + alumno.getPortatil().getMarca()+ " / " +alumno.getPortatil().getModelo());
+					}
 				
 			  break;
-			  case 8: 
+			  case 7: 
 				  
 				  System.out.println("Gracias por utilizar la aplicación");
 				  salir = true;
